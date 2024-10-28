@@ -1,0 +1,120 @@
+[gd_scene load_steps=10 format=3 uid="uid://cycgrwtoefxby"]
+
+[ext_resource type="Script" path="res://Scripts/Vehicle_camera_pivotNode3D.gd" id="1_lrnhr"]
+[ext_resource type="AudioStream" uid="uid://c4j6re7vcxrby" path="res://Assets/Audio/Vehicle_WindNoise.wav" id="2_n2r14"]
+[ext_resource type="AudioStream" uid="uid://dg1rknpkq8a1o" path="res://Assets/Audio/Vehicle_Falling.wav" id="3_e7v68"]
+[ext_resource type="PackedScene" uid="uid://c16f74c0duveq" path="res://Scenes/Track_NFS2_TR07_MysticPeaks_SnowFX.tscn" id="4_ri8mg"]
+[ext_resource type="Texture2D" uid="uid://puq4kpnhgsic" path="res://Assets/Textures/LoadingScreens/NFSGP_Loading.png" id="5_e4s2b"]
+[ext_resource type="PackedScene" uid="uid://dtnk6inlkw7to" path="res://Scenes/Track_FX_Rain.tscn" id="6_5mo2b"]
+[ext_resource type="PackedScene" uid="uid://ctxm3guk0r87v" path="res://Scenes/TXDsnow_gpu_particles_3d.tscn" id="7_bm5ao"]
+[ext_resource type="PackedScene" uid="uid://cd05t8v80rdwy" path="res://Scenes/VFX_Fire.tscn" id="8_jvnmr"]
+[ext_resource type="AudioStream" uid="uid://crykgpv57tnue" path="res://Assets/Audio/Vehicle_Explode.wav" id="9_qukww"]
+
+[node name="Vehicle_Camera_PivotNode3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.436943, -0.507113)
+script = ExtResource("1_lrnhr")
+
+[node name="WindNoise_AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_n2r14")
+autoplay = true
+bus = &"VolMiscSoundFX"
+
+[node name="Falling_AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_e7v68")
+bus = &"VolRacingMusic"
+
+[node name="FixedCamera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.999999, -0.00174534, 8.67711e-08, -0.00173232, 0.992545, 0.121869, -0.00021279, 0.121869, -0.992546, 0, 1.224, -4.39194)
+current = true
+
+[node name="FixedCamera3D2" type="Camera3D" parent="."]
+transform = Transform3D(0.999999, 0.00174533, -1.45519e-11, -0.00173232, 0.992545, 0.121869, 0.000212702, -0.121869, 0.992546, 0, 1.224, 4.24445)
+visible = false
+
+[node name="Track_NFS2_MysticPeaks_SnowFX" parent="." instance=ExtResource("4_ri8mg")]
+visible = false
+
+[node name="LoadingTextureRect" type="TextureRect" parent="."]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("5_e4s2b")
+expand_mode = 1
+
+[node name="Track_FX_RainGroup" type="Node3D" parent="."]
+visible = false
+
+[node name="Track_FX_Rain1" parent="Track_FX_RainGroup" instance=ExtResource("6_5mo2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.378968, 0.507113)
+
+[node name="Track_FX_Rain2" parent="Track_FX_RainGroup" instance=ExtResource("6_5mo2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.378968, -18.7109)
+
+[node name="Track_FX_Rain3" parent="Track_FX_RainGroup" instance=ExtResource("6_5mo2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.378968, 20.9328)
+
+[node name="TST_GPUParticles3D" parent="." instance=ExtResource("7_bm5ao")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25605, 2.36032, 3.70067)
+visible = false
+
+[node name="CarExplosion" type="Node3D" parent="."]
+transform = Transform3D(-0.999999, -0.00174534, 8.75526e-08, -0.00173232, 0.992545, 0.121869, -0.00021279, 0.121869, -0.992546, 0, 1.224, -4.39194)
+visible = false
+
+[node name="VFX_Fire_Red" parent="CarExplosion" instance=ExtResource("8_jvnmr")]
+transform = Transform3D(-0.999998, -0.00173232, -0.00021279, -0.00174534, 0.992545, 0.121869, 8.75091e-08, 0.121869, -0.992546, 0.575265, -1.35108, -3.03952)
+
+[node name="VFX_Fire_Red2" parent="CarExplosion" instance=ExtResource("8_jvnmr")]
+transform = Transform3D(-0.999998, -0.00173232, -0.00021279, -0.00174534, 0.992545, 0.121869, 8.75076e-08, 0.121869, -0.992546, 0.575108, -1.26104, -3.77281)
+
+[node name="VFX_Fire_Red3" parent="CarExplosion" instance=ExtResource("8_jvnmr")]
+transform = Transform3D(-0.999997, -0.00173232, -0.00021279, -0.00174534, 0.992545, 0.121869, 8.75202e-08, 0.121869, -0.992546, 0.574962, -1.17745, -4.45361)
+
+[node name="VFX_Fire_Red4" parent="CarExplosion" instance=ExtResource("8_jvnmr")]
+transform = Transform3D(-0.999997, -0.00173232, -0.00021279, -0.00174534, 0.992544, 0.121869, 8.75325e-08, 0.121869, -0.992546, 0.57482, -1.09602, -5.11684)
+
+[node name="VFX_Fire_Red5" parent="CarExplosion" instance=ExtResource("8_jvnmr")]
+transform = Transform3D(-0.999997, -0.00173232, -0.00021279, -0.00174534, 0.992544, 0.121869, 8.75301e-08, 0.121869, -0.992546, 0.574683, -1.01737, -5.75738)
+
+[node name="VFX_Fire_Red6" parent="CarExplosion" instance=ExtResource("8_jvnmr")]
+transform = Transform3D(-0.999997, -0.00173232, -0.00021279, -0.00174534, 0.992544, 0.121869, 8.75246e-08, 0.121869, -0.992546, 0.574539, -0.935323, -6.42559)
+
+[node name="VFX_Fire_Red7" parent="CarExplosion" instance=ExtResource("8_jvnmr")]
+transform = Transform3D(-0.999997, -0.00173232, -0.00021279, -0.00174534, 0.992544, 0.121869, 8.75181e-08, 0.121869, -0.992546, 0.574386, -0.847835, -7.13813)
+
+[node name="VFX_Fire_Red8" parent="CarExplosion" instance=ExtResource("8_jvnmr")]
+transform = Transform3D(-0.999998, -0.00173232, -0.00021279, -0.00174534, 0.992545, 0.121869, 8.75091e-08, 0.121869, -0.992546, -0.483426, -1.35293, -3.03952)
+
+[node name="VFX_Fire_Red15" parent="CarExplosion" instance=ExtResource("8_jvnmr")]
+transform = Transform3D(-0.999997, -0.00173232, -0.00021279, -0.00174534, 0.992544, 0.121869, 8.75325e-08, 0.121869, -0.992546, 0.575428, -1.44413, -2.28168)
+
+[node name="VFX_Fire_Red16" parent="CarExplosion" instance=ExtResource("8_jvnmr")]
+transform = Transform3D(-0.999997, -0.00173232, -0.00021279, -0.00174534, 0.992544, 0.121869, 8.75325e-08, 0.121869, -0.992546, -0.483263, -1.44598, -2.28168)
+
+[node name="VFX_Fire_Red9" parent="CarExplosion" instance=ExtResource("8_jvnmr")]
+transform = Transform3D(-0.999998, -0.00173232, -0.00021279, -0.00174534, 0.992545, 0.121869, 8.75076e-08, 0.121869, -0.992546, -0.483583, -1.26289, -3.77281)
+
+[node name="VFX_Fire_Red10" parent="CarExplosion" instance=ExtResource("8_jvnmr")]
+transform = Transform3D(-0.999997, -0.00173232, -0.00021279, -0.00174534, 0.992545, 0.121869, 8.75202e-08, 0.121869, -0.992546, -0.483729, -1.1793, -4.45361)
+
+[node name="VFX_Fire_Red11" parent="CarExplosion" instance=ExtResource("8_jvnmr")]
+transform = Transform3D(-0.999997, -0.00173232, -0.00021279, -0.00174534, 0.992544, 0.121869, 8.75325e-08, 0.121869, -0.992546, -0.483871, -1.09786, -5.11684)
+
+[node name="VFX_Fire_Red12" parent="CarExplosion" instance=ExtResource("8_jvnmr")]
+transform = Transform3D(-0.999997, -0.00173232, -0.00021279, -0.00174534, 0.992544, 0.121869, 8.75301e-08, 0.121869, -0.992546, -0.484009, -1.01922, -5.75738)
+
+[node name="VFX_Fire_Red13" parent="CarExplosion" instance=ExtResource("8_jvnmr")]
+transform = Transform3D(-0.999997, -0.00173232, -0.00021279, -0.00174534, 0.992544, 0.121869, 8.75246e-08, 0.121869, -0.992546, -0.484152, -0.93717, -6.42559)
+
+[node name="VFX_Fire_Red14" parent="CarExplosion" instance=ExtResource("8_jvnmr")]
+transform = Transform3D(-0.999997, -0.00173232, -0.00021279, -0.00174534, 0.992544, 0.121869, 8.75181e-08, 0.121869, -0.992546, -0.484302, -0.851254, -7.12533)
+
+[node name="CarExplode_AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.783424, 0, 0)
+stream = ExtResource("9_qukww")
+bus = &"VolMiscSoundFX"
+
+[node name="CarExplode_AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.783424, 0, 0)
+stream = ExtResource("9_qukww")
+bus = &"VolMiscSoundFX"

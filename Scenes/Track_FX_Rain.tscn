@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtnk6inlkw7to"]
+
+[ext_resource type="RibbonTrailMesh" uid="uid://8f4uu1y7laye" path="res://Shaders/Rain/VFX_Rain_process_material.tres" id="5_cjtsh"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c7fo5"]
+emission_shape = 3
+emission_box_extents = Vector3(10, 1, 10)
+direction = Vector3(0, -1, 0)
+spread = 5.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+color = Color(1, 1, 1, 0.352941)
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[node name="Track_FX_Rain" type="Node3D"]
+
+[node name="Rain_GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 0)
+amount = 200
+preprocess = 1.0
+randomness = 0.85
+visibility_aabb = AABB(-4, -12, -4, 8, 12, 8)
+trail_enabled = true
+trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_c7fo5")
+draw_pass_1 = ExtResource("5_cjtsh")

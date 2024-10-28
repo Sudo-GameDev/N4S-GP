@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://c48wcnno3e03a"]
+
+[ext_resource type="Texture2D" uid="uid://pdlkljesi6qb" path="res://Assets/Textures/Light_Grey_Smoke.png" id="1_ppfal"]
+
+[sub_resource type="Curve" id="Curve_l57c8"]
+_data = [Vector2(0, 0.452632), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_osum6"]
+width = 2048
+curve = SubResource("Curve_l57c8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qanih"]
+emission_shape = 1
+emission_sphere_radius = 0.3
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
+gravity = Vector3(0, 0, 0)
+linear_accel_max = 2.0
+radial_accel_max = 1.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_osum6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fx45w"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.74902, 0.74902, 0.819608, 0.12549)
+albedo_texture = ExtResource("1_ppfal")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_dtcjx"]
+material = SubResource("StandardMaterial3D_fx45w")
+
+[node name="TireSmoke_GPUParticles3D" type="GPUParticles3D"]
+emitting = false
+amount = 100
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_qanih")
+draw_pass_1 = SubResource("QuadMesh_dtcjx")

@@ -1,0 +1,195 @@
+[gd_scene load_steps=10 format=3 uid="uid://dygcn4t50yioi"]
+
+[ext_resource type="Script" path="res://Scripts/NFSGP_PauseMenu.gd" id="1_eqlyb"]
+[ext_resource type="AudioStream" uid="uid://b5b6b217gjxky" path="res://Assets/Audio/btnSoundHover.wav" id="5_kjkb0"]
+[ext_resource type="AudioStream" uid="uid://b4y82pfhq3k4b" path="res://Assets/Audio/btnSoundClick.wav" id="6_g5xe0"]
+[ext_resource type="AudioStream" uid="uid://brb1voh024uce" path="res://Assets/Audio/ErrorWin95.wav" id="7_5jtht"]
+[ext_resource type="Theme" uid="uid://b3rvrrbcdp8u5" path="res://Assets/Themes/NFStheme.tres" id="7_wqh4o"]
+[ext_resource type="AudioStream" uid="uid://ddxdt5s651ik2" path="res://Assets/Audio/NFS2vrooom.wav" id="8_thhkn"]
+[ext_resource type="Theme" uid="uid://dsrciiluq5a1c" path="res://Assets/Themes/NFS_SapphireTheme.tres" id="9_da64c"]
+[ext_resource type="Texture2D" uid="uid://puq4kpnhgsic" path="res://Assets/Textures/LoadingScreens/NFSGP_Loading.png" id="9_hrm8r"]
+[ext_resource type="AudioStream" uid="uid://dy6vp0v8vojc1" path="res://Assets/Audio/Coin.wav" id="10_2otrx"]
+
+[node name="NFSGP_PauseMenu" type="Node2D"]
+script = ExtResource("1_eqlyb")
+metadata/_edit_vertical_guides_ = [59.0, 1220.0, 332.0, 949.0]
+metadata/_edit_horizontal_guides_ = [685.0, 75.0]
+
+[node name="SapphireControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+metadata/_edit_lock_ = true
+
+[node name="ColorRectBk" type="ColorRect" parent="SapphireControl"]
+modulate = Color(1, 1, 1, 0.901961)
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.00392157, 0.0745098, 0.168627, 1)
+metadata/_edit_lock_ = true
+
+[node name="Line2Dcard" type="Line2D" parent="SapphireControl"]
+position = Vector2(-1, 1)
+points = PackedVector2Array(576, 35, 60, 35, 60, 641, 107, 684, 1221, 684, 1221, 74, 626, 74, 576, 35)
+width = 2.0
+default_color = Color(0.294118, 0.494118, 0.694118, 1)
+
+[node name="AudioUI" type="Node" parent="SapphireControl"]
+
+[node name="AudioBtnHover" type="AudioStreamPlayer" parent="SapphireControl/AudioUI"]
+stream = ExtResource("5_kjkb0")
+volume_db = -14.0
+
+[node name="AudioBtnPressed" type="AudioStreamPlayer" parent="SapphireControl/AudioUI"]
+stream = ExtResource("6_g5xe0")
+volume_db = -7.0
+
+[node name="AudioBtnError" type="AudioStreamPlayer" parent="SapphireControl/AudioUI"]
+stream = ExtResource("7_5jtht")
+
+[node name="AudioBtnRace" type="AudioStreamPlayer" parent="SapphireControl/AudioUI"]
+stream = ExtResource("8_thhkn")
+
+[node name="AudioBtnCoin" type="AudioStreamPlayer" parent="SapphireControl/AudioUI"]
+stream = ExtResource("10_2otrx")
+volume_db = -14.0
+
+[node name="MiscTxt" type="Node2D" parent="SapphireControl"]
+
+[node name="TitleRichTextLbl_old" type="RichTextLabel" parent="SapphireControl/MiscTxt"]
+visible = false
+clip_contents = false
+offset_left = 92.0
+offset_top = 48.0
+offset_right = 667.0
+offset_bottom = 94.0
+pivot_offset = Vector2(-8, -3)
+size_flags_horizontal = 0
+theme = ExtResource("7_wqh4o")
+theme_override_font_sizes/normal_font_size = 14
+text = "NFS Godot Pursuit   -   Pause Menu"
+scroll_active = false
+
+[node name="TitleRichTextLbl" type="RichTextLabel" parent="SapphireControl/MiscTxt"]
+modulate = Color(1, 1, 1, 0.501961)
+clip_contents = false
+offset_left = 77.0
+offset_top = 48.0
+offset_right = 652.0
+offset_bottom = 94.0
+pivot_offset = Vector2(-8, -3)
+size_flags_horizontal = 0
+theme = ExtResource("7_wqh4o")
+theme_override_font_sizes/normal_font_size = 21
+text = "N4S-Godot Pursuit  -   Pause Menu"
+scroll_active = false
+
+[node name="RacingTipLbl2" type="Label" parent="SapphireControl/MiscTxt"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 297.0
+offset_top = 649.0
+offset_right = 987.0
+offset_bottom = 671.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("9_da64c")
+text = "RACING TIP:  Your car has unlocked a boost function!  Simply press Alt & F4 together to engage."
+
+[node name="ResumeBtn" type="Button" parent="SapphireControl"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.353125
+anchor_top = 0.239583
+anchor_right = 0.647656
+anchor_bottom = 0.239583
+offset_left = -114.0
+offset_top = 2.5
+offset_right = 114.0
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(118, -44)
+theme = ExtResource("9_da64c")
+theme_override_font_sizes/font_size = 26
+text = "Resume Game"
+metadata/_edit_use_anchors_ = true
+
+[node name="RestartBtn" type="Button" parent="SapphireControl"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.353125
+anchor_top = 0.422222
+anchor_right = 0.647656
+anchor_bottom = 0.422222
+offset_left = -114.0
+offset_top = 99.0
+offset_right = 114.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(118, -44)
+theme = ExtResource("9_da64c")
+theme_override_font_sizes/font_size = 26
+text = "Restart Race"
+metadata/_edit_use_anchors_ = true
+
+[node name="MainMenuBtn" type="Button" parent="SapphireControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -302.5
+offset_top = -71.0
+offset_right = 302.5
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(118, -44)
+theme = ExtResource("9_da64c")
+theme_override_font_sizes/font_size = 26
+text = "Quit to Main Menu"
+
+[node name="QuitBtn" type="Button" parent="SapphireControl"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.375781
+anchor_top = 0.369444
+anchor_right = 0.625
+anchor_bottom = 0.369444
+offset_left = -143.0
+offset_top = 251.0
+offset_right = 143.0
+offset_bottom = 296.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(118, -44)
+theme = ExtResource("9_da64c")
+theme_override_font_sizes/font_size = 26
+text = "Quit to System"
+metadata/_edit_use_anchors_ = true
+
+[node name="LoadingTextureRect" type="TextureRect" parent="SapphireControl"]
+visible = false
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("9_hrm8r")
+expand_mode = 1
+
+[connection signal="mouse_entered" from="SapphireControl/ResumeBtn" to="." method="_on_resume_btn_mouse_entered"]
+[connection signal="pressed" from="SapphireControl/ResumeBtn" to="." method="_on_resume_btn_pressed"]
+[connection signal="mouse_entered" from="SapphireControl/RestartBtn" to="." method="_on_restart_btn_mouse_entered"]
+[connection signal="pressed" from="SapphireControl/RestartBtn" to="." method="_on_restart_btn_pressed"]
+[connection signal="mouse_entered" from="SapphireControl/MainMenuBtn" to="." method="_on_main_menu_btn_mouse_entered"]
+[connection signal="pressed" from="SapphireControl/MainMenuBtn" to="." method="_on_main_menu_btn_pressed"]
+[connection signal="mouse_entered" from="SapphireControl/QuitBtn" to="." method="_on_quit_btn_mouse_entered"]
+[connection signal="pressed" from="SapphireControl/QuitBtn" to="." method="_on_quit_btn_pressed"]

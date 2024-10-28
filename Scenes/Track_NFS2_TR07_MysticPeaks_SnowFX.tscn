@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://c16f74c0duveq"]
+
+[ext_resource type="Script" path="res://Scripts/Track_NFS2_TR07_MysticPeaks_SnowFX.gd" id="1_2lxwy"]
+[ext_resource type="PackedScene" uid="uid://ctxm3guk0r87v" path="res://Scenes/TXDsnow_gpu_particles_3d.tscn" id="65_2tew1"]
+
+[node name="Track_NFS2_TR07_MysticPeaks_SnowFX" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.149, 0.205522, 0)
+script = ExtResource("1_2lxwy")
+
+[node name="F1snow_GPUParticles3D" parent="." instance=ExtResource("65_2tew1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0259771, 4.55795, -0.238086)
+
+[node name="F2snow_GPUParticles3D" parent="." instance=ExtResource("65_2tew1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0259771, 4.55795, 7.83059)
+
+[node name="F3snow_GPUParticles3D" parent="." instance=ExtResource("65_2tew1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0259771, 4.55795, 15.8477)
+
+[node name="F4snow_GPUParticles3D" parent="." instance=ExtResource("65_2tew1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0259771, 4.55795, 23.8825)
+
+[node name="R1snow_GPUParticles3D" parent="." instance=ExtResource("65_2tew1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0259771, 4.55795, -8.2832)
+
+[node name="R2snow_GPUParticles3D" parent="." instance=ExtResource("65_2tew1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0259771, 4.55795, -16.2925)

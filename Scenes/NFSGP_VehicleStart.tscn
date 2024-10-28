@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://8276kbt6nr4m"]
+
+[ext_resource type="Script" path="res://Scripts/NFSGP_VehicleStart.gd" id="1_47tmt"]
+
+[node name="NFSGP_VehicleStart" type="Node3D"]
+script = ExtResource("1_47tmt")
+
+[node name="CountdownCamera3" type="Camera3D" parent="."]
+transform = Transform3D(0.704651, 0.0778906, -0.705266, 0.00521646, 0.993361, 0.11492, 0.709535, -0.0846575, 0.699566, -4.22466, 3.56078, 4.38371)
+fov = 100.0
+
+[node name="CountdownCamera2" type="Camera3D" parent="."]
+transform = Transform3D(0.564537, -0.0996212, 0.819374, -0.00173232, 0.992545, 0.121869, -0.825406, -0.070219, 0.560156, 3.0527, 0.954952, 2.57842)
+fov = 40.0
+
+[node name="CountdownCamera1" type="Camera3D" parent="."]
+transform = Transform3D(-0.861222, 0.0604565, -0.504621, -0.00173233, 0.992545, 0.121869, 0.508226, 0.105831, -0.854696, -1.24266, 0.859543, -3.41664)
+fov = 40.0

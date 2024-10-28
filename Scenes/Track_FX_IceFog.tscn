@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://wyqebabdwafd"]
+
+[ext_resource type="Shader" path="res://Shaders/Track_MysticPeaks_Fog3.gdshader" id="1_e1m0y"]
+
+[sub_resource type="Gradient" id="Gradient_3oemi"]
+offsets = PackedFloat32Array(0.0136054, 0.993197)
+colors = PackedColorArray(0.155671, 0, 0.785926, 1, 0.598222, 0.845496, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ehtk0"]
+gradient = SubResource("Gradient_3oemi")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_367bg"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_asfl3"]
+seamless = true
+noise = SubResource("FastNoiseLite_367bg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y28tl"]
+shader = ExtResource("1_e1m0y")
+shader_parameter/noise_scale = 0.06
+shader_parameter/flatness = 1.0
+shader_parameter/density = 1.05
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_asfl3")
+shader_parameter/grad_tex = SubResource("GradientTexture1D_ehtk0")
+
+[node name="FogVolume" type="FogVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -342.067, 93.7418, -543.397)
+size = Vector3(2, 32, 32)
+material = SubResource("ShaderMaterial_y28tl")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.2657, 0)
+light_energy = 8.0
+light_size = 100.0
+light_specular = 0.0
+omni_range = 24.0

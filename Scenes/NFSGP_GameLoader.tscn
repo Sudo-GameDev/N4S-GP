@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://ye0tradk7xo4"]
+
+[ext_resource type="Script" path="res://Scripts/NFSGP_GameLoader.gd" id="1_d8fxm"]
+[ext_resource type="AudioStream" uid="uid://dy6vp0v8vojc1" path="res://Assets/Audio/Coin.wav" id="3_mjbs4"]
+[ext_resource type="AudioStream" uid="uid://dk4c4k4xifwx5" path="res://Assets/Audio/Track_321Go.wav" id="5_g4eal"]
+[ext_resource type="AudioStream" uid="uid://him04h74pd3y" path="res://Assets/Audio/Track_BestLapTime.wav" id="6_2fjbg"]
+[ext_resource type="PackedScene" uid="uid://klppck1h68c8" path="res://Scenes/NFSGP_HUD.tscn" id="7_6wdwe"]
+[ext_resource type="AudioStream" uid="uid://bey21ymdp0rr" path="res://Assets/Audio/Track_FinalLap.wav" id="7_ddob6"]
+[ext_resource type="PackedScene" uid="uid://dygcn4t50yioi" path="res://Scenes/NFSGP_PauseMenu.tscn" id="8_eptfd"]
+[ext_resource type="AudioStream" uid="uid://ba8ux0whsmacv" path="res://Assets/Audio/Track_RaceWin.wav" id="8_f1aij"]
+[ext_resource type="Theme" uid="uid://b3rvrrbcdp8u5" path="res://Assets/Themes/NFStheme.tres" id="9_7drcj"]
+
+[node name="NFSGP_GameLoader" type="Node3D"]
+script = ExtResource("1_d8fxm")
+metadata/_edit_horizontal_guides_ = [75.0, 5.0, 89.0]
+metadata/_edit_vertical_guides_ = [803.0, 547.0]
+
+[node name="AudioBtnCoin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_mjbs4")
+volume_db = -12.0
+bus = &"VolMenuSoundFX"
+
+[node name="NFSGP_HUD" parent="." instance=ExtResource("7_6wdwe")]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_left = 546.8
+offset_top = 0.8
+offset_right = 802.8
+offset_bottom = 86.8
+theme = ExtResource("9_7drcj")
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(256, 86)
+render_target_update_mode = 4
+
+[node name="Mirror_FixedCamera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.74401, 0)
+
+[node name="Line2Dcard" type="Line2D" parent="."]
+position = Vector2(-1.20001, 1.8)
+points = PackedVector2Array(678.2, 0.2, 550.2, 0.2, 550.2, 85.2, 802.2, 85.2, 802.2, 0.2, 678.2, 0.2)
+width = 4.0
+default_color = Color(0.0745098, 0.168627, 0.372549, 0.811765)
+
+[node name="NFSGP_PauseMenu" parent="." instance=ExtResource("8_eptfd")]
+visible = false
+
+[node name="LapSounds" type="Node" parent="."]
+
+[node name="321Go_AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="LapSounds"]
+stream = ExtResource("5_g4eal")
+autoplay = true
+bus = &"VolSpeech"
+
+[node name="BestLap_AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="LapSounds"]
+stream = ExtResource("6_2fjbg")
+bus = &"VolSpeech"
+
+[node name="FinalLap_AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="LapSounds"]
+stream = ExtResource("7_ddob6")
+bus = &"VolSpeech"
+
+[node name="RaceWin_AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="LapSounds"]
+stream = ExtResource("8_f1aij")
+bus = &"VolSpeech"

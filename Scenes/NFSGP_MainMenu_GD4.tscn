@@ -1,0 +1,286 @@
+[gd_scene load_steps=16 format=3 uid="uid://qletyht2tsdq"]
+
+[ext_resource type="Script" path="res://Scripts/SapphireControl.gd" id="1_nopi2"]
+[ext_resource type="AudioStream" uid="uid://fwso6bn5rmky" path="res://Assets/Audio/NFS3demo4.wav" id="2_4mr12"]
+[ext_resource type="VideoStream" path="res://Assets/Videos/MenuVid.ogv" id="2_pqoh1"]
+[ext_resource type="VideoStream" path="res://Assets/Videos/MenuDeveloper.ogv" id="3_4a30g"]
+[ext_resource type="AudioStream" uid="uid://b5b6b217gjxky" path="res://Assets/Audio/btnSoundHover.wav" id="3_fujud"]
+[ext_resource type="AudioStream" uid="uid://b4y82pfhq3k4b" path="res://Assets/Audio/btnSoundClick.wav" id="4_yo2p2"]
+[ext_resource type="AudioStream" uid="uid://brb1voh024uce" path="res://Assets/Audio/ErrorWin95.wav" id="5_wdntf"]
+[ext_resource type="AudioStream" uid="uid://dy6vp0v8vojc1" path="res://Assets/Audio/Coin.wav" id="6_1fgyd"]
+[ext_resource type="FontFile" uid="uid://74trtdhqwqlt" path="res://Assets/Import/Baksheesh Regular.ttf" id="7_0su7n"]
+[ext_resource type="AudioStream" uid="uid://ddxdt5s651ik2" path="res://Assets/Audio/NFS2vrooom.wav" id="7_mspm5"]
+[ext_resource type="AudioStream" uid="uid://rkqesjb5elsw" path="res://Assets/Audio/btnDevClick.wav" id="7_v81kv"]
+[ext_resource type="Theme" uid="uid://dsrciiluq5a1c" path="res://Assets/Themes/NFS_SapphireTheme.tres" id="11_glxtl"]
+[ext_resource type="Script" path="res://Scripts/NFSGP_TrackText.gd" id="12_yuqte"]
+[ext_resource type="Theme" uid="uid://b3rvrrbcdp8u5" path="res://Assets/Themes/NFStheme.tres" id="13_g0pd5"]
+
+[sub_resource type="FontFile" id="3"]
+fallbacks = Array[Font]([ExtResource("7_0su7n")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[node name="NFSGP_MainMenu" type="Node2D"]
+metadata/_edit_vertical_guides_ = [1182.0, 59.0, 91.0, 1220.0, 575.0]
+metadata/_edit_horizontal_guides_ = [685.0, 106.0, 142.0, 609.0, 645.0]
+
+[node name="SapphireControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+script = ExtResource("1_nopi2")
+
+[node name="NFS4VideoStreamPlayer" type="VideoStreamPlayer" parent="SapphireControl"]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+stream = ExtResource("2_pqoh1")
+autoplay = true
+
+[node name="DevelopersVid" type="VideoStreamPlayer" parent="SapphireControl"]
+modulate = Color(1, 1, 1, 0.235294)
+layout_mode = 0
+offset_left = 304.0
+offset_top = 589.0
+offset_right = 800.0
+offset_bottom = 957.0
+scale = Vector2(0.25, 0.25)
+stream = ExtResource("3_4a30g")
+volume_db = -14.0
+
+[node name="ColorRectBk" type="ColorRect" parent="SapphireControl"]
+visible = false
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.00392157, 0.0745098, 0.168627, 1)
+metadata/_edit_lock_ = true
+
+[node name="Line2Dcard" type="Line2D" parent="SapphireControl"]
+position = Vector2(-1, 1)
+points = PackedVector2Array(576, 35, 60, 35, 60, 641, 107, 684, 1221, 684, 1221, 74, 626, 74, 576, 35)
+width = 2.0
+default_color = Color(0.294118, 0.494118, 0.694118, 1)
+
+[node name="AudioUI" type="Node" parent="SapphireControl"]
+
+[node name="BkAudioStreamPlayer" type="AudioStreamPlayer" parent="SapphireControl/AudioUI"]
+stream = ExtResource("2_4mr12")
+autoplay = true
+bus = &"VolMenuMusic"
+
+[node name="AudioBtnHover" type="AudioStreamPlayer" parent="SapphireControl/AudioUI"]
+stream = ExtResource("3_fujud")
+bus = &"VolMenuSoundFX"
+
+[node name="AudioBtnPressed" type="AudioStreamPlayer" parent="SapphireControl/AudioUI"]
+stream = ExtResource("4_yo2p2")
+bus = &"VolMenuSoundFX"
+
+[node name="AudioBtnError" type="AudioStreamPlayer" parent="SapphireControl/AudioUI"]
+stream = ExtResource("5_wdntf")
+bus = &"VolMenuSoundFX"
+
+[node name="AudioBtnRace" type="AudioStreamPlayer" parent="SapphireControl/AudioUI"]
+stream = ExtResource("7_mspm5")
+bus = &"VolMenuSoundFX"
+
+[node name="AudioBtnDev" type="AudioStreamPlayer" parent="SapphireControl/AudioUI"]
+stream = ExtResource("7_v81kv")
+bus = &"VolMenuMusic"
+
+[node name="AudioBtnCoin" type="AudioStreamPlayer" parent="SapphireControl/AudioUI"]
+stream = ExtResource("6_1fgyd")
+volume_db = -12.0
+bus = &"VolMenuSoundFX"
+
+[node name="MiscTxt" type="Node2D" parent="SapphireControl"]
+
+[node name="TrackRichTextLbl" type="RichTextLabel" parent="SapphireControl/MiscTxt"]
+visible = false
+modulate = Color(1, 1, 1, 0.670588)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 91.0
+offset_top = 166.0
+offset_right = 360.0
+offset_bottom = 537.0
+grow_horizontal = 2
+pivot_offset = Vector2(189, -49)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("11_glxtl")
+text = "Track description goes here!"
+script = ExtResource("12_yuqte")
+
+[node name="WarrantyLbl" type="Label" parent="SapphireControl/MiscTxt"]
+offset_left = 463.0
+offset_top = 652.0
+offset_right = 823.0
+offset_bottom = 674.0
+theme_override_fonts/font = SubResource("3")
+text = "If you are reading this, your Warranty is now void."
+
+[node name="TitleRichTextLbl" type="RichTextLabel" parent="SapphireControl/MiscTxt"]
+modulate = Color(1, 1, 1, 0.501961)
+clip_contents = false
+offset_left = 88.0
+offset_top = 51.0
+offset_right = 663.0
+offset_bottom = 97.0
+pivot_offset = Vector2(-8, -3)
+size_flags_horizontal = 0
+theme = ExtResource("13_g0pd5")
+theme_override_font_sizes/normal_font_size = 21
+text = "N4S-GP Beta v4.3.0.8 - Main Menu"
+scroll_active = false
+
+[node name="VersionReferenceNotes" type="RichTextLabel" parent="SapphireControl/MiscTxt"]
+clip_contents = false
+offset_left = 63.0
+offset_top = -98.0
+offset_right = 1207.0
+offset_bottom = -52.0
+pivot_offset = Vector2(-8, -3)
+size_flags_horizontal = 0
+theme = ExtResource("13_g0pd5")
+theme_override_font_sizes/normal_font_size = 14
+text = "Godot major.minor.patch.revision (use revision for Sudo-GameDev) example 4.2.1.23 (reset rev to 0 on godot build update)"
+scroll_active = false
+
+[node name="DevHrsLbl" type="Label" parent="SapphireControl/MiscTxt"]
+offset_left = 90.0
+offset_top = 563.0
+offset_right = 548.0
+offset_bottom = 589.0
+theme = ExtResource("11_glxtl")
+text = "+254 Development Hours and Counting! Sleep is lame anyways."
+
+[node name="VehicleOptBtn" type="OptionButton" parent="SapphireControl"]
+layout_mode = 0
+offset_left = 965.0
+offset_top = 112.0
+offset_right = 1176.0
+offset_bottom = 136.0
+theme = ExtResource("11_glxtl")
+selected = 0
+item_count = 7
+popup/item_0/text = "Vehicle Selection:"
+popup/item_0/disabled = true
+popup/item_0/separator = true
+popup/item_1/text = "Camaro IROC-Z"
+popup/item_1/id = 1
+popup/item_2/text = "Nissan 300ZX"
+popup/item_2/id = 2
+popup/item_2/disabled = true
+popup/item_3/text = "Porsche 911 Targa"
+popup/item_3/id = 3
+popup/item_4/text = "McLaren F1"
+popup/item_4/id = 4
+popup/item_5/text = "Pursuit Vehicles"
+popup/item_5/id = 5
+popup/item_5/disabled = true
+popup/item_5/separator = true
+popup/item_6/text = "Sergeant Cross"
+popup/item_6/id = 6
+popup/item_6/disabled = true
+
+[node name="TrackOptBtn" type="OptionButton" parent="SapphireControl"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 112.0
+offset_right = 568.0
+offset_bottom = 136.0
+theme = ExtResource("11_glxtl")
+selected = 0
+item_count = 17
+popup/item_0/text = "Track / Map Selection:"
+popup/item_0/disabled = true
+popup/item_0/separator = true
+popup/item_1/text = "Need For Speed II SE"
+popup/item_1/id = 1
+popup/item_1/separator = true
+popup/item_2/text = "Proving Grounds (AI Upscaled Textures)"
+popup/item_2/id = 2
+popup/item_3/text = "Last Resort"
+popup/item_3/id = 3
+popup/item_3/disabled = true
+popup/item_4/text = "Mystic Peaks (AI Upscaled Textures)"
+popup/item_4/id = 4
+popup/item_5/text = "Need For Speed III Hot Pursuit"
+popup/item_5/id = 5
+popup/item_5/separator = true
+popup/item_6/text = "Hometown (AI Upscaled Textures)"
+popup/item_6/id = 6
+popup/item_7/text = "Redrock Ridge"
+popup/item_7/id = 7
+popup/item_8/text = "Atlantica"
+popup/item_8/id = 8
+popup/item_8/disabled = true
+popup/item_9/text = "Rocky Pass"
+popup/item_9/id = 9
+popup/item_9/disabled = true
+popup/item_10/text = "Country Woods (AI Upscaled Textures)"
+popup/item_10/id = 10
+popup/item_11/text = "Lost Canyons (AI Upscaled Textures)"
+popup/item_11/id = 11
+popup/item_12/text = "Aquatica"
+popup/item_12/id = 12
+popup/item_12/disabled = true
+popup/item_13/text = "The Summit"
+popup/item_13/id = 13
+popup/item_13/disabled = true
+popup/item_14/text = "Empire City"
+popup/item_14/id = 14
+popup/item_14/disabled = true
+popup/item_15/text = "Simpsons Hit and Run"
+popup/item_15/id = 15
+popup/item_15/separator = true
+popup/item_16/text = "Racetrack"
+popup/item_16/id = 16
+
+[node name="RaceBtn" type="Button" parent="SapphireControl"]
+layout_mode = 0
+offset_left = 1002.0
+offset_top = 615.0
+offset_right = 1175.0
+offset_bottom = 639.0
+pivot_offset = Vector2(118, -44)
+theme = ExtResource("11_glxtl")
+text = "Race"
+
+[node name="DevBtn" type="Button" parent="SapphireControl"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 615.0
+offset_right = 270.0
+offset_bottom = 639.0
+pivot_offset = Vector2(118, -44)
+theme = ExtResource("11_glxtl")
+text = "Developers"
+
+[node name="LoadingTextureRect" type="TextureRect" parent="SapphireControl"]
+visible = false
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+expand_mode = 1
+
+[connection signal="finished" from="SapphireControl/NFS4VideoStreamPlayer" to="SapphireControl" method="_on_nfs_4_video_stream_player_finished"]
+[connection signal="finished" from="SapphireControl/AudioUI/BkAudioStreamPlayer" to="SapphireControl" method="_on_BkAudioStreamPlayer_finished"]
+[connection signal="item_selected" from="SapphireControl/VehicleOptBtn" to="SapphireControl" method="_on_vehicle_opt_btn_item_selected"]
+[connection signal="mouse_entered" from="SapphireControl/VehicleOptBtn" to="SapphireControl" method="_on_vehicle_opt_btn_mouse_entered"]
+[connection signal="pressed" from="SapphireControl/VehicleOptBtn" to="SapphireControl" method="_on_vehicle_opt_btn_pressed"]
+[connection signal="item_selected" from="SapphireControl/TrackOptBtn" to="SapphireControl" method="_on_track_opt_btn_item_selected"]
+[connection signal="mouse_entered" from="SapphireControl/TrackOptBtn" to="SapphireControl" method="_on_track_opt_btn_mouse_entered"]
+[connection signal="pressed" from="SapphireControl/TrackOptBtn" to="SapphireControl" method="_on_track_opt_btn_pressed"]
+[connection signal="mouse_entered" from="SapphireControl/RaceBtn" to="SapphireControl" method="_on_race_btn_mouse_entered"]
+[connection signal="pressed" from="SapphireControl/RaceBtn" to="SapphireControl" method="_on_race_btn_pressed"]
+[connection signal="mouse_entered" from="SapphireControl/DevBtn" to="SapphireControl" method="_on_dev_btn_mouse_entered"]
+[connection signal="pressed" from="SapphireControl/DevBtn" to="SapphireControl" method="_on_dev_btn_pressed"]
